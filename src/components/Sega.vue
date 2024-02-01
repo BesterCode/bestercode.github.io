@@ -5,6 +5,7 @@
     <div class="content">
       <div class="header">
         <img src="../assets/Sega_Mega_Drive_Logo.png" alt="Sega Genesis Logo"/>
+        <div class="subheader"><div>WORTHWHILE</div> <div>COLLECTION</div></div>        
       </div>
     </div>
   </div>
@@ -131,6 +132,7 @@ function drawVerticalLines(ctx, verticalOffset, width, height, angleFactor) {
   for (let i = 1; i <= (width - centerX) / lineSpacing; i++) {
     // Calculate the angle for the current line
     let angle = angleFactor * i * angleIncrease;
+    angle = Math.min(Math.max(angle, 0), 1.57); // clamp to 90 degrees to avoid the line going into wild directions
 
     // Lines to the right of the center
     drawAngledLine(ctx, centerX + i * lineSpacing, verticalOffset, angle, height);
@@ -247,6 +249,42 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 
 .header {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;  
+}
+
+@font-face {
+  font-family: 'Ethnocentric Rg'; 
+  src: url('@/assets/fonts/ethnocentric_rg.otf') format('truetype');
+}
+
+.subheader {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  div {
+    width: 450px;
+    &:first-child {
+      text-align: right;
+    }    
+    margin-top: -29px;
+    
+    /* text color gradient: */
+    background: linear-gradient(to bottom, #220081 0%, #3A00FD 25%, white 49.9%, black 50%, #44005A 50.1%, #F1AA00 75%, white 100%);
+    -webkit-background-clip: text; /* Webkit-based browsers */
+    background-clip: text;
+    /* stroke: */
+    -webkit-text-stroke: 1px rgba(212, 212, 212, 0.897); /* Webkit-based browsers */
+    text-stroke: 1px rgb(179, 179, 179); /* Standard syntax */
+    /* outer glow: */
+    -webkit-filter: drop-shadow(0px 0px 10px rgb(21, 75, 255));
+    filter: drop-shadow(0px 0px 10px rgb(21, 75, 255));
+    color: transparent; /* Make the text color transparent */
+    display: inline-block; /* Ensure the gradient background spans the text */
+
+    /* font */
+    font-family: 'Ethnocentric Rg', sans-serif; /* Fallback to sans-serif if the custom font doesn't load */
+    font-size: 43px;
+  }
 }
 </style>
