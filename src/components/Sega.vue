@@ -330,8 +330,8 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   width: 374px;
   height: 300px;
   background-image: image-set(
-    './src/assets/sega-template.png' 1x,
-    './src/assets/sega-template@2x.png' 2x,
+    '@/assets/sega-template.png' 1x,
+    '@/assets/sega-template@2x.png' 2x,
   );
   background-size: cover;
   display:flex;
