@@ -4,8 +4,23 @@
     <canvas id="canvasGreenLines"></canvas>    
     <div class="content">
       <div class="header">
-        <img src="../assets/Sega_Mega_Drive_Logo.png" alt="Sega Genesis Logo"/>
+        <img src="@/assets/Sega_Mega_Drive_Logo.png" alt="Sega Genesis Logo"/>
         <div class="subheader"><div>WORTHWHILE</div> <div>COLLECTION</div></div>        
+      </div>
+      <div class="games_container">        
+        <div class="game" v-for="game in games" :key="game.Game">
+          <div class="genre">{{game.Genre}}</div>
+          <div class="gamedetails">
+            <div class="screenshot_container">
+              <img class="screenshot" :src="game.Screenshot"/>
+            </div>
+            <div class="gameTexts">
+              <span class="gameTitle">{{game.Game}}</span>
+              <span class="gameDescription" v-if="game.Description">{{game.Description}}</span>
+              <span class="gameDescription" v-if="game.Description2">{{game.Description2}}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -13,11 +28,14 @@
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
+import yaml from 'js-yaml';
+
+const games = ref([]);
 
 const homeContent = ref(null);
 const resizeListener = ref(null);
 
-onMounted(() => {
+onMounted(async () => {
   createWhiteGrid();
   createGreenGrid();  
 
@@ -26,6 +44,12 @@ onMounted(() => {
     createGreenGrid();    
   };
   window.addEventListener('resize', resizeListener.value);
+
+  const response = await fetch('./src/assets/sega.yaml');
+  //console.log(response);
+  const text = await response.text();
+  games.value = yaml.load(text);
+  //console.log(games.value);
 });
 
 onUnmounted(() => {
@@ -258,16 +282,21 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   src: url('@/assets/fonts/ethnocentric_rg.otf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Arcade'; 
+  src: url('@/assets/fonts/arcade.ttf') format('truetype');
+}
+
 .subheader {
   display: flex;
   align-items: center;
   gap: 50px;
+  margin-top: -22px;
   div {
     width: 450px;
     &:first-child {
       text-align: right;
     }    
-    margin-top: -29px;
     
     /* text color gradient: */
     background: linear-gradient(to bottom, #220081 0%, #3A00FD 25%, white 49.9%, black 50%, #44005A 50.1%, #F1AA00 75%, white 100%);
@@ -286,5 +315,82 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
     font-family: 'Ethnocentric Rg', sans-serif; /* Fallback to sans-serif if the custom font doesn't load */
     font-size: 43px;
   }
+}
+
+.games_container {
+  display: flex;
+  gap: 20px 10px;
+  margin: 25px 5px 30px 5px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.game {
+  width: 374px;
+  height: 300px;
+  background-image: image-set(
+    './src/assets/sega-template.png' 1x,
+    './src/assets/sega-template@2x.png' 2x,
+  );
+  background-size: cover;
+  display:flex;
+}
+
+.genre {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 39px;  
+  padding: 28px 15px 14px 0px;
+  font-family: 'Arcade', sans-serif;
+  font-size: 36px;
+  word-spacing: -10px;
+  line-height: 0.6;
+}
+
+.screenshot_container {
+  width: 320px;
+  height: 224px;
+  /* crops the image's top and bottom if it exceeds the size */
+  overflow: hidden; /* This hides the parts of the image that exceed the container's dimensions */
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* glow */
+  /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
+}
+.screenshot {
+  /* helps with the crop */
+  width: 100%; /* Makes the image fill the container's width */
+  height: auto; /* Maintains the image's aspect ratio */
+  /* helps to make it look crisp, like it's integer scaling on 4k */
+  image-rendering: pixelated;
+}
+
+.gamedetails {
+  width: calc(100% - 54px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;  
+}
+
+.gameTexts {
+  height: 76px;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+}
+
+.gameTitle {
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.gameDescription {
+  font-size: 12px;
 }
 </style>
