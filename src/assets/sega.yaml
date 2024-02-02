@@ -6,7 +6,7 @@
 
 - Game: Elemental Master
   Screenshot: https://cdn.mobygames.com/screenshots/878610-elemental-master-genesis-.png
-  Genre: Action
+  Genre: Shooter
   Description: Excellent D&D aesthetic in a bidirectional walk 'em up.
 
 - Game: Fire Shark
@@ -25,11 +25,377 @@
   Genre: Beat 'em up Stealth
   Description: A completely different take on the same concept as the arcade original. (Light) stealth focused derivative of the multi-plane door 'em up subgenre.
 
+- Game: El Viento
+  Screenshot: https://cdn.mobygames.com/screenshots/960513-el-viento-genesis-fighting-a-tank.png
+  Genre: Beat 'em up
+  Description: Jank Japanese PC game charm. Gameplay feels like you're controlling a mech that happens to have a human sprite.
+
+- Game: Twin Cobra
+  Screenshot: https://cdn.mobygames.com/screenshots/1362042-twin-cobra-genesis-flying-into-kaban.png
+  Genre: Aerial shooter
+  Description: Murderous close quarters combat take (3:4 aspect ratio turned 4:3, done properly) of an already brutal arcade game.
+
+- Game: Mercs
+  Screenshot: https://cdn.mobygames.com/screenshots/15735558-mercs-genesis-moving-faster-and-with-some-security.png
+  Genre: Arcade Shooter
+  Description: A very unique ARPG take on the arcade game, with squad management, upgrade rationing, shops and multiple paths through completely different levels.
+
+- Game: Undead Line
+  Screenshot: https://cdn.mobygames.com/screenshots/15886685-undead-line-genesis-ghosts-attack-after-their-tombstones-are-bro.png
+  Genre: Arcade Shooter
+  Description: An unfinished port with a more robust shmup design than the original. Pleasant D&D aesthetic.
+
+- Game: Alisia Dragoon
+  Screenshot: https://cdn.mobygames.com/screenshots/1680982-alisia-dragoon-genesis-the-first-level-bosses.png
+  Genre: Shooter Platformer
+  Description: A 2D mech sim lite in disguise due to character movement. The monsters were designed by Gainax!
+
+- Game: "Chelnov: Atomic Runner"
+  Screenshot: https://cdn.mobygames.com/screenshots/5261287-chelnov-atomic-runner-genesis-egyptian-level.png
+  Genre: Shooter Platformer
+  Description: Quite different from the arcade original. Unlike most 16-bit ports, here the graphics are improved.
+
+- Game: Bio Hazard Battle
+  Screenshot: https://cdn.mobygames.com/screenshots/477766-bio-hazard-battle-genesis-futuristic-city-level.png
+  Genre: Scrolling Shooter
+  Description: In terms of art, atmosphere, setting and especially music,
+  Description2: it's one of the best of the genre.
+
+- Game: Steel Empire
+  Screenshot: https://cdn.mobygames.com/screenshots/15797024-steel-empire-genesis-a-large-battleship.png
+  Genre: Scrolling Shooter
+  Description: Considered seminal for its presentation.
+
+- Game: Thunder Force IV
+  Screenshot: https://cdn.mobygames.com/screenshots/4712032-lightening-force-quest-for-the-darkstar-genesis-this-boss-will-t.png
+  Genre: Scrolling Shooter
+  Description: This was AAA in 1992, and an excellent horizontal shooter even today.
+
+- Game: Twinkle Tale
+  Screenshot: https://cdn.mobygames.com/screenshots/15909375-twinkle-tale-genesis-entering-level-2.png
+  Genre: Fantasy Shoot 'em up
+  Description: Another D&D aesthetic walk'em up.
+  Description2: Multi-directional, with a Zelda-lite dungeon crawling stage.
+
+- Game: Battle Mania Daiginjō
+  Screenshot: https://cdn.mobygames.com/screenshots/15764523-battle-mania-daiginjo-genesis-demonstration.png
+  Genre: Shoot 'em up
+  Description: Bubblegum Crisis in early 90s Japanese Suburbia with a gorgeous aesthetic.
+
+- Game: Robo Aleste
+  Screenshot: https://cdn.mobygames.com/screenshots/8920422-robo-aleste-sega-cd-flying-over-war-ridden-landscape.png
+  Genre: Shoot 'em up
+  Description: Compile was one of the most prolific Japanese PC gamedevs. This game was probably their best one before they split up.
+
+- Game: Eliminate Down
+  Screenshot: https://cdn.mobygames.com/screenshots/5757862-eliminate-down-genesis-firing-a-spread-shot.png
+  Genre: Scrolling Shooter
+  Description: Thunder Force IV's darker doppelganger. Must play for the soundtrack alone.
+
+- Game: Ranger X
+  Screenshot: https://cdn.mobygames.com/screenshots/2311732-ranger-x-genesis-level-1-1.png
+  Genre: Mecha Shooter
+  Description: Low key sequel to the amazing Granada.
+  Description2: Excellent seek and destroy stage design refining on its prequel.
+
+- Game: Final Fight
+  Screenshot: https://cdn.mobygames.com/screenshots/8494660-final-fight-sega-cd-chokehold.png
+  Genre: Beat 'em up
+  Description: Play it for the exclusive time attack mode.
+  Description2: Pure arcade delight.
+
+- Game: Gauntlet IV
+  Screenshot: https://cdn.mobygames.com/screenshots/4168580-gauntlet-iv-genesis-throwing-weapons-at-the-ghosts.png
+  Genre: Arcade Action
+  Description: The draw is in the "Quest Mode" which turns the game into a proper ARPG. Amazing music from Sakimoto. Unique puzzle-action gameplay.
+
+- Game: "Mazin Saga: Mutant Fighter"
+  Screenshot: https://cdn.mobygames.com/screenshots/4385113-mazin-saga-mutant-fighter-genesis-boss-fight.png
+  Genre: Beat 'em up Mecha
+  Description: 
+
+- Game: Rocket Knight Adventures
+  Screenshot: https://cdn.mobygames.com/screenshots/2364727-rocket-knight-adventures-genesis-pigs-storm-the-castle.png
+  Genre: Platformer
+  Description: This is in many ways a stealth sequel to Contra 3 from the same development team.
+
+- Game: Silpheed
+  Screenshot: https://cdn.mobygames.com/screenshots/15650128-silpheed-sega-cd-level-2.png
+  Genre: Shoot 'em up
+  Description: Port of a Japanese PC shmup classic from a legendary 80s Japanese PC developer by the same developer.
+
+- Game: Slap Fight MD
+  Screenshot: https://cdn.mobygames.com/screenshots/664562-slap-fight-md-genesis-slap-fight-special-mode.png
+  Genre: Shoot 'em up
+  Description: Play it for the "Special Mode" which turns the janky grow-to-power-up mechanic of the original into a strategic sacrifice and hitbox management bombing mechanism.
+
+- Game: Alien Soldier
+  Screenshot: https://cdn.mobygames.com/screenshots/15818648-alien-soldier-genesis-stage-3-final-boss-shell-shogun.png
+  Genre: Shoot 'em up
+  Description: One of the best looking games on the system.
+
+- Game: Sub-Terrania
+  Screenshot: https://cdn.mobygames.com/screenshots/16055656-sub-terrania-genesis-attention-with-his-fireballs-and-his-vivaci.png
+  Genre: Scrolling Shooter
+  Description: Rare post-crash Western developed 2D action game that's not garbage.
+
+- Game: Devil's Crush
+  Screenshot: https://cdn.mobygames.com/screenshots/1731092-devils-crush-genesis-lets-hit-that-head.png
+  Genre: Pinball
+  Description: Original by a legendary dev, port by another legendary dev.
+  Description2: Considered the best pinball video game ever made.
+
+- Game: Gain Ground
+  Screenshot: https://cdn.mobygames.com/screenshots/876007-gain-ground-genesis-boss-battle.png
+  Genre: Top-Down Shooter
+  Description: Port of a very unique arcade game. Play it for the brutal "hard mode" remix.
+
+- Game: Rampart
+  Screenshot: https://cdn.mobygames.com/screenshots/16272794-rampart-genesis-battle-and-fire.png
+  Genre: Shoot 'em up Strategy
+  Description: Japanese port of a good Western arcade game.
+
+- Game: Marvel Land
+  Screenshot: https://cdn.mobygames.com/screenshots/2748335-marvel-land-genesis-push-the-bowling-ball-right-back-into-the-sp.png
+  Genre: Platformer
+  Description: Namco's 1984 Pacland was the first true side scrolling platformer (AFAIK). This is its spiritual sequel, very hardcore and still played for score.
+
+- Game: Langrisser II
+  Screenshot: https://cdn.mobygames.com/screenshots/1718802-langrisser-ii-genesis-battle-sequence-outdoors-in-a-forest.png
+  Genre: Strategy RPG
+  Description: Possibly the best SRPG of the 16-bit generation in terms of challenge (if you don't include Fire Emblem 5, which was released in 1999!)
+
+- Game: Rolling Thunder 3
+  Screenshot: https://cdn.mobygames.com/screenshots/2371345-rolling-thunder-3-genesis-most-enemies-have-specific-shooting-pa.png
+  Genre: Shoot em' up
+  Description: A Mega Drive exclusive third entry to a sub-genre defining arcade duology.
+
+- Game: "Shinobi III: Return of the Ninja Master"
+  Screenshot: https://cdn.mobygames.com/screenshots/351570-shinobi-iii-return-of-the-ninja-master-genesis-up-to-my-knees-in.png
+  Genre: "Hack'n'slash Plaformer"
+  Description: One of the console's defining games. Likewise its 80s prequel The Revenge of Shinobi.
+
+- Game: Assault Suit Leynos
+  Screenshot: https://cdn.mobygames.com/screenshots/15808043-target-earth-genesis-explosive-stuff.png
+  Genre: Shoot 'em up
+  Description:  Considered the 2D mech sim-lite sub-genre progenitor. This game is all about improvisational play in expansive warscapes.
+
+- Game: Rambo 3
+  Screenshot: https://cdn.mobygames.com/screenshots/775203-rambo-iii-genesis-a-heated-battle.png
+  Genre: Shooter
+  Description: Don't let the Western license fool you, this is quality Japanese action. Great top down seek'n'destroy.
+
+- Game: The Hybrid Front
+  Screenshot: https://cdn.mobygames.com/screenshots/16298987-the-hybrid-front-genesis-another-combat-sequence-this-time-with-.png
+  Genre: Turn-Based Wargame
+  Description: Beautiful art from Jun Suemi and obviously a lot of effort put into the game world. No English version as of yet.
+
+- Game: Sorcerian
+  Screenshot: https://cdn.mobygames.com/screenshots/732111-sorcerian-genesis-starting-in-the-town.png
+  Genre: Fantasy ARPG
+  Description: Probably the best version of the seminal Japanese PC ARPG. "Reprogrammed" (ported) by Sega, a mark of quality.
+
+- Game: Lord Monarch
+  Screenshot: https://cdn.mobygames.com/screenshots/245390-lord-monarch-genesis-in-genesis-version-you-can-move-around-befo.png
+  Genre: Strategy
+  Description: A weird strategy game reminiscent of Populous. A significant departure from the original. Has a translation patch.
+
+- Game: Dark Wizard
+  Screenshot: https://cdn.mobygames.com/screenshots/15707557-dark-wizard-sega-cd-a-mage-casting-attacking-a-harpy-with-a-fire.png
+  Genre: RPG
+  Description: You can cheese it and ruin it for yourself. Play it for low turn counts instead.
+
+- Game: Shadowrun
+  Screenshot: https://cdn.mobygames.com/screenshots/2511612-shadowrun-genesis-the-amerindian-lands-of-silish-shidhe-provide-.jpg
+  Genre: ARPG
+  Description: Some people really love the Mega Drive version.
+
 - Game: Punisher
   Screenshot: https://cdn.mobygames.com/screenshots/15796934-the-punisher-genesis-starting-stage-2.png
   Genre: Beat 'em up brawler
-  Description: Play as Punisher or Nick Fury.
+  Description:
 
-- Game: Golden Axe II
-  Screenshot: https://cdn.mobygames.com/screenshots/864086-golden-axe-ii-genesis-jumping-slam-attack.png
-  Genre: Beat 'em up / brawler
+- Game: Aladdin
+  Screenshot: https://cdn.mobygames.com/screenshots/16546348-disneys-aladdin-amiga-and-the-final-stage.png
+  Genre: Platformer
+  Description: 
+
+- Game: Rock n' Roll Racing
+  Screenshot: https://cdn.mobygames.com/screenshots/2366935-rock-n-roll-racing-genesis-sinister-drakonis-planet.png
+  Genre: Racing
+  Description: 
+
+- Game: Streets of Rage II
+  Screenshot: https://cdn.mobygames.com/screenshots/4722976-streets-of-rage-2-genesis-dragon-punch.png
+  Genre: Beat 'em up
+  Description: Prequel and sequel are also noteworthy.
+
+- Game: "Pitfall: The Mayan Adventure"
+  Screenshot: https://cdn.mobygames.com/screenshots/2230607-pitfall-the-mayan-adventure-genesis-not-a-very-good-jump.png
+  Genre: Platformer
+  Description:
+
+- Game: "Spider-Man / Venom: Maximum Carnage"
+  Screenshot: https://cdn.mobygames.com/screenshots/16394828-spider-man-venom-maximum-carnage-genesis-boss-fight.png
+  Genre: Beat 'em up
+  Description: 
+
+- Game: Demolition Man
+  Screenshot: https://cdn.mobygames.com/screenshots/1677779-demolition-man-genesis-auto-park-level.png
+  Genre: Platformer
+  Description: 
+
+- Game: Judge Dredd
+  Screenshot: https://cdn.mobygames.com/screenshots/15986709-judge-dredd-genesis-the-first-boss.png
+  Genre: Platformer
+  Description: 
+
+- Game: The Lion King
+  Screenshot: https://cdn.mobygames.com/screenshots/16451095-the-lion-king-genesis-bone-spikes.png
+  Genre: Platformer
+  Description: 
+
+- Game: Gargoyles
+  Screenshot: https://cdn.mobygames.com/screenshots/15853271-gargoyles-genesis-walking-on-a-wall.png
+  Genre: Platformer
+  Description: 
+
+- Game: Zero Tolerance
+  Screenshot: https://cdn.mobygames.com/screenshots/1956561-zero-tolerance-genesis-lots-of-baddies-guard-the-medical-kits.png
+  Genre: FPS
+  Description: 
+
+- Game: Earthworm Jim
+  Screenshot: https://cdn.mobygames.com/screenshots/597117-earthworm-jim-genesis-this-cow-is-a-puzzle-figure-out-how-to-lau.png
+  Genre: Platformer
+  Description: Followed by a sequel.
+
+- Game: Comix Zone
+  Screenshot: https://cdn.mobygames.com/screenshots/1886478-comix-zone-genesis-liberty-statue-and-mutants-look-at-the-hand-t.png
+  Genre: Beat 'em up
+  Description: 
+
+- Game: Contra Hard Corps
+  Screenshot: https://cdn.mobygames.com/screenshots/1987719-contra-hard-corps-genesis-the-boss-of-the-first-level.png
+  Genre: Shoot 'em up
+  Description: 
+
+- Game: Sonic the Hedgehog
+  Screenshot: https://cdn.mobygames.com/screenshots/980630-sonic-the-hedgehog-genesis-over-hot-lava.png
+  Genre: Platformer
+  Description: Followed by sequels.
+
+- Game: Ultimate Mortal Kombat 3
+  Screenshot: https://cdn.mobygames.com/screenshots/778357-ultimate-mortal-kombat-3-genesis-one-of-the-famous-fatalities.png
+  Genre: Fighting
+  Description: Prequels are also fantastic.
+
+- Game: The Adventures of Batman & Robin
+  Screenshot: https://cdn.mobygames.com/screenshots/16542410-the-adventures-of-batman-robin-genesis-robbers-in-expo-build.png
+  Genre: Beat 'em up
+  Description: 
+
+- Game: Toy Story
+  Screenshot: https://cdn.mobygames.com/screenshots/1841028-disneys-toy-story-genesis-riding-the-dinosaur.png
+  Genre: Platformer
+  Description: 
+
+- Game: VectorMan
+  Screenshot: https://cdn.mobygames.com/screenshots/321150-vectorman-genesis-those-flying-things-explode-and-cause-lots-of-.png
+  Genre: Platformer
+  Description: Has a sequel.
+
+- Game: "Tiny Toon Adventures: Buster's Hidden Treasure"
+  Screenshot: https://cdn.mobygames.com/screenshots/2539965-tiny-toon-adventures-busters-hidden-treasure-genesis-buster-can-.png
+  Genre: Platformer
+  Description: 
+
+- Game: RoboCop versus The Terminator
+  Screenshot: https://cdn.mobygames.com/screenshots/4442170-robocop-versus-the-terminator-genesis-the-terminator.png
+  Genre: Platformer Shooter
+  Description: 
+
+- Game: Desert Strike
+  Screenshot: https://cdn.mobygames.com/screenshots/308310-desert-strike-return-to-the-gulf-genesis-knock-out-the-radar.png
+  Genre: Isometric Shooter
+  Description: "Sequels: Jungle Strike and Urban Strike."
+
+- Game: Ariel the Little Mermaid
+  Screenshot: https://cdn.mobygames.com/screenshots/1820056-disneys-ariel-the-little-mermaid-genesis-through-the-boulders.png
+  Genre: Platformer
+  Description: 
+
+- Game: Golden Axe
+  Screenshot: https://cdn.mobygames.com/screenshots/860052-golden-axe-genesis-gilius-in-action.png
+  Genre: Beat 'em up
+  Description: Has a good sequel, improving on the formula. The third installment plays differently and wasn't well received.
+
+- Game: Warlock
+  Screenshot: https://cdn.mobygames.com/screenshots/1515132-warlock-genesis-you-start-in-a-peaceful-scenery.png
+  Genre: Platformer
+  Description: 
+
+- Game: Landstalker
+  Screenshot: https://cdn.mobygames.com/screenshots/1719161-landstalker-genesis-examining-a-statue.png
+  Genre: Platformer RPG
+  Description: 
+
+- Game: Beyond Oasis
+  Screenshot: https://cdn.mobygames.com/screenshots/3394768-beyond-oasis-genesis-entrance-to-the-castle.png
+  Genre: ARPG
+  Description: 
+
+- Game: "Castlevania: Bloodlines"
+  Screenshot: https://cdn.mobygames.com/screenshots/981530-castlevania-bloodlines-genesis-ruins-of-castle-dracula.png
+  Genre: Platformer
+  Description: 
+
+- Game: Shining in the Darkness
+  Screenshot: https://cdn.mobygames.com/screenshots/328186-shining-in-the-darkness-genesis-having-a-little-chat-with-the-ta.png
+  Genre: RPG
+  Description: 
+
+- Game: Shining Force
+  Screenshot: https://cdn.mobygames.com/screenshots/3733554-shining-force-genesis-a-nice-way-of-saying-yes-or-no.png
+  Genre: RPG
+  Description: 
+
+- Game: Ecco the Dolphin
+  Screenshot: https://cdn.mobygames.com/screenshots/684018-ecco-the-dolphin-genesis-just-swim-around-and-enjoy-the-wonderfu.png
+  Genre: Platformer
+  Description: 
+
+- Game: Gunstar Heroes
+  Screenshot: https://cdn.mobygames.com/screenshots/1013789-gunstar-heroes-genesis-a-range-of-enemies-attack-from-all-sides-.png
+  Genre: Shoot 'em up
+  Description: 
+
+- Game: Zombies Ate My Neighbors
+  Screenshot: https://cdn.mobygames.com/screenshots/362521-zombies-ate-my-neighbors-genesis-the-stupid-neighbor-is-sitting-.png
+  Genre: Shooter
+  Description: 
+
+- Game: True Lies
+  Screenshot: https://cdn.mobygames.com/screenshots/7056379-true-lies-genesis-surrounded-by-guards.png
+  Genre: Shooter
+  Description: 
+
+- Game: "The Lost World: Jurassic Park"
+  Screenshot: https://cdn.mobygames.com/screenshots/4265682-the-lost-world-jurassic-park-genesis-starting-off-at-the-mobile-.png
+  Genre: Shooter
+  Description: 
+
+- Game: Splatterhouse 3
+  Screenshot: https://cdn.mobygames.com/screenshots/622756-splatterhouse-3-genesis-an-uppercut-combo.png
+  Genre: Beat 'em up
+  Description: 
+
+- Game: Road Rash
+  Screenshot: https://cdn.mobygames.com/screenshots/2356552-road-rash-genesis-yamaha-is-way-better-than-kawasaki-no-its-not-.png
+  Genre: Racing
+  Description: Followed by two sequels.
+
+- Game: "Teenage Mutant Ninja Turtles: The Hyperstone Heist"
+  Screenshot: https://cdn.mobygames.com/screenshots/389430-teenage-mutant-ninja-turtles-the-hyperstone-heist-genesis-leonar.png
+  Genre: Beat 'em up
+  Description: "There's also a fighting game Teenage Mutant Ninja Turtles: Tournament Fighters"
