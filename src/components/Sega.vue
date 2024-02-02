@@ -37,6 +37,10 @@ const homeContent = ref(null);
 const resizeListener = ref(null);
 
 onMounted(async () => {
+  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    document.documentElement.classList.add('firefox');
+  }
+
   createWhiteGrid();
   createGreenGrid();  
 
@@ -285,7 +289,7 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 
 @font-face {
   font-family: 'Arcade'; 
-  src: url('@/assets/fonts/arcade.ttf') format('truetype');
+  src: url('@/assets/fonts/arcade.otf') format('truetype');
 }
 
 .subheader {
@@ -344,12 +348,18 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   align-items: center;
   justify-content: center;
   text-align: center;
+  /* width is 54, the sum of Width and second padding */
   width: 39px;  
   padding: 28px 15px 14px 0px;
   font-family: 'Arcade', sans-serif;
   font-size: 36px;
   word-spacing: -10px;
   line-height: 0.6;
+}
+
+.firefox .genre {
+  width: 49px;
+  padding: 28px 5px 14px 0px;
 }
 
 .screenshot_container {
