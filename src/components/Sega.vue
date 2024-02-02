@@ -51,10 +51,8 @@ onMounted(async () => {
   window.addEventListener('resize', resizeListener.value);
 
   const response = await fetch(segaYaml);
-  //console.log(response);
   const text = await response.text();
   games.value = yaml.load(text);
-  //console.log(games.value);
 });
 
 onUnmounted(() => {
@@ -65,8 +63,8 @@ function createGreenGrid() {
   const container = homeContent.value;
   if (!container) return;
   const canvas = container.querySelector('#canvasGreenLines');
-  canvas.width = container.offsetWidth;
-  canvas.height = container.offsetHeight;
+  canvas.width =  Math.max(container.offsetWidth, window.innerWidth);
+  canvas.height =  Math.max(container.offsetHeight, window.innerHeight);
   const ctx = canvas.getContext('2d');  
 
   // the lines start drawing at this offset from the top
@@ -103,8 +101,8 @@ function createWhiteGrid() {
   if (!container) return;
 
   const canvas = container.querySelector('#canvasWhiteLines');
-  canvas.width = container.offsetWidth;
-  canvas.height = container.offsetHeight;
+  canvas.width =  Math.max(container.offsetWidth, window.innerWidth);
+  canvas.height =  Math.max(container.offsetHeight, window.innerHeight);
 
   const ctx = canvas.getContext('2d');
 
@@ -251,8 +249,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 
 <style scoped>
 #home__content {
-  position: relative;
-  height: 100%;
   margin: 0;
 }
 
@@ -325,7 +321,7 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 .games_container {
   display: flex;
   gap: 20px 10px;
-  margin: 25px 5px 30px 5px;
+  padding: 25px 5px 30px 5px;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }

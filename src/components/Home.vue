@@ -8,7 +8,7 @@
 
 <style scoped>
 #home__content {
-  height: 100%;
+ 
   margin: 0;
   padding: 0;
   text-align: center;
