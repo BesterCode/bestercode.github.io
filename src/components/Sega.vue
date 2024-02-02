@@ -29,6 +29,7 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import yaml from 'js-yaml';
+import segaYaml from '@/assets/sega.yaml';
 
 const games = ref([]);
 
@@ -45,7 +46,7 @@ onMounted(async () => {
   };
   window.addEventListener('resize', resizeListener.value);
 
-  const response = await fetch('./src/assets/sega.yaml');
+  const response = await fetch(segaYaml);
   //console.log(response);
   const text = await response.text();
   games.value = yaml.load(text);
