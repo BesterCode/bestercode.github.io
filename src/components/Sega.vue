@@ -5,7 +5,7 @@
     <div class="content">
       <div class="header">
         <div class="credits">
-          The first half is a connoisseur list compiled by Nutmeg. <br>
+          The first half is a connoisseur list compiled by <a href="https://rpgcodex.net/forums/members/nutmeg.16903/" class="no_a_decoration">Nutmeg</a>. <br>
           The second half consists of mass audience oriented games. <br>
           To contribute, go to <a href="https://github.com/BesterCode/bestercode.github.io">repository</a>.
         </div>
@@ -302,6 +302,10 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   }
   a:hover {
     color: #cc5ae8;
+  }
+  .no_a_decoration {
+    color: white;
+    font-weight: normal;
   }
 }
 
