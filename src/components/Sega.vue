@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUpdated, onUnmounted, ref } from 'vue';
 import yaml from 'js-yaml';
 import segaYaml from '@/assets/sega.yaml';
 
@@ -44,9 +44,6 @@ onMounted(async () => {
     document.documentElement.classList.add('firefox');
   }
 
-  createWhiteGrid();
-  createGreenGrid();  
-
   resizeListener.value = () => {
     createWhiteGrid();
     createGreenGrid();    
@@ -58,15 +55,21 @@ onMounted(async () => {
   games.value = yaml.load(text);
 });
 
+onUpdated(async () => {
+  createWhiteGrid();
+  createGreenGrid();  
+});
+
 onUnmounted(() => {
   window.removeEventListener('resize', resizeListener.value);
 });
 
 function createGreenGrid() {
+  console.log('createGreenGrid')
   const container = homeContent.value;
   if (!container) return;
   const canvas = container.querySelector('#canvasGreenLines');
-  canvas.width =  Math.max(container.offsetWidth, window.innerWidth);
+  canvas.width =  container.parentElement.offsetWidth; //Math.max(container.offsetWidth, window.innerWidth);
   canvas.height =  Math.max(container.offsetHeight, window.innerHeight);
   const ctx = canvas.getContext('2d');  
 
@@ -104,7 +107,7 @@ function createWhiteGrid() {
   if (!container) return;
 
   const canvas = container.querySelector('#canvasWhiteLines');
-  canvas.width =  Math.max(container.offsetWidth, window.innerWidth);
+  canvas.width =  container.parentElement.offsetWidth;
   canvas.height =  Math.max(container.offsetHeight, window.innerHeight);
 
   const ctx = canvas.getContext('2d');
@@ -298,12 +301,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   }
   a:hover {
     color: #cc5ae8;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .credits {
-    display: none;
   }
 }
 
