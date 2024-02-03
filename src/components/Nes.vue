@@ -124,12 +124,26 @@ function createWhiteGrid() {
 
   const ctx = canvas.getContext('2d');
 
-  // Set the background color for the canvas  
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
   // the lines draw until this offset
   let verticalCutoff = 250;
+
+  // Create a linear gradient
+// The gradient starts at the top (y=0) and ends at y=verticalCutoffpixels
+  const backgroundGradient = ctx.createLinearGradient(0, 0, 0, 250);
+  backgroundGradient.addColorStop(0, '#000000'); // Start with black at the top
+  backgroundGradient.addColorStop(0.85, '#000000'); // Continue with black towards 85% of the height
+  backgroundGradient.addColorStop(1.0, '#0f0619'); // Transition to #0f0619 towards verticalCutoff
+
+  // Fill the rest of the canvas with #0f0619
+  // This ensures a smooth transition in the first 250 pixels
+  // and a solid color (#0f0619) afterwards
+  ctx.fillStyle = backgroundGradient;
+  ctx.fillRect(0, 0, canvas.width, verticalCutoff); // Apply the gradient only to the first 250 pixels
+
+  // If needed, fill the rest of the canvas height with a solid color (#0f0619)
+  // This step may be optional if the gradient's last color stop suffices for the visual effect
+  ctx.fillStyle = '#0f0619';
+  ctx.fillRect(0, verticalCutoff, canvas.width, canvas.height - verticalCutoff);
 
   // Create a vertical gradient for the lines
   const lineGradient = ctx.createLinearGradient(0, 0, 0, verticalCutoff);
