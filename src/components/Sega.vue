@@ -78,11 +78,13 @@ function createGreenGrid() {
   
   // Create a vertical gradient for the lines
   // the transition lasts for 300 pixels, i.e. from verticalOffset to verticalOffset+300
-  const lineGradient = ctx.createLinearGradient(0, verticalOffset, 0, verticalOffset+300);
+  const lineGradient = ctx.createLinearGradient(0, verticalOffset, 0, verticalOffset+2000);
   lineGradient.addColorStop(0, 'rgba(49, 255, 109, 0.0)'); // fully transparent at the top
-  lineGradient.addColorStop(0.1, 'rgba(49, 255, 109, 0.1)'); // fully transparent at the top
-  lineGradient.addColorStop(0.2, 'rgba(49, 255, 109, 0.3)'); // fully transparent at the top
-  lineGradient.addColorStop(1, 'rgba(49, 255, 109, 1.0)'); // fully upaque at the bottom
+  lineGradient.addColorStop(0.015, 'rgba(49, 255, 109, 0.1)'); // 0.1 transparency at 30 pixels from the top
+  lineGradient.addColorStop(0.03, 'rgba(49, 255, 109, 0.3)'); // 0.3 at 60 px
+  lineGradient.addColorStop(0.15, 'rgba(49, 255, 109, 1.0)'); // 1.0 at 300 px
+  lineGradient.addColorStop(0.6, 'rgba(49, 255, 109, 1.0)'); // 1.0 at 1200 px
+  lineGradient.addColorStop(1.0, 'rgba(49, 255, 109, 0.4)'); // 0.4 at 2000 px and further down
   // Use this gradient for drawing lines
   ctx.strokeStyle = lineGradient;
 
@@ -192,7 +194,8 @@ function drawLine(ctx, x1, y1, x2, y2) {
 
 function drawWhiteGrid(ctx, width, height, cellHeight, cellWidth) {
   // Draw horizontal and vertical lines
-  for (let x = 25; x < width; x += cellWidth) {
+  // 30 is the original horizontal offset
+  for (let x = 32; x < width; x += cellWidth) {
     ctx.beginPath();
     ctx.moveTo(x, 0);
     ctx.lineTo(x, height);
