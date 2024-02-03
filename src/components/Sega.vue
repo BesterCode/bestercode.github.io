@@ -5,9 +5,7 @@
     <div class="content">
       <div class="header">
         <div class="credits">
-          The first half is a connoisseur list compiled by <a href="https://rpgcodex.net/forums/members/nutmeg.16903/" class="no_a_decoration">Nutmeg</a>. <br>
-          The second half consists of mass audience oriented games. <br>
-          To contribute, go to <a href="https://github.com/BesterCode/bestercode.github.io">repository</a>.
+          <a href="https://github.com/BesterCode/bestercode.github.io">repository</a>
         </div>
         <img src="@/assets/Sega_Mega_Drive_Logo.png" alt="Sega Genesis Logo"/>
         <div class="subheader"><div>WORTHWHILE</div> <div>COLLECTION</div></div>        
@@ -285,13 +283,11 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 
 .credits {
   position: absolute;
-  left: 0px;
-  color: white;
-  padding: 5px 0px 0px 10px;
+  right: 10px;
   -webkit-filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
   filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
   text-shadow: 
-    -1px -1px 0 #ff00ddb7,
+    -1px -1px 0 #ff00dd6b,
     -1px  1px 0 #0000007a,
      1px  1px 0 #0000007a
      ;
@@ -302,10 +298,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   }
   a:hover {
     color: #cc5ae8;
-  }
-  .no_a_decoration {
-    color: white;
-    font-weight: normal;
   }
 }
 
