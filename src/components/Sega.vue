@@ -347,6 +347,26 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   }
 }
 
+/* "worthwhile collection" is too wide of a text for mobile devices */
+@media only screen and (max-width: 870px) {  
+  .header {    
+    overflow: hidden;
+    img {
+      margin-top: 15px;
+      width: 100%;
+    }
+  }
+  .subheader {
+    gap: 0px;
+    flex-direction: column;
+    margin-top: 0px;
+    div {
+      text-align: center !important;
+      font-size: 23px;
+    }
+  }
+}
+
 .games_container {
   display: flex;
   gap: 20px 10px;
