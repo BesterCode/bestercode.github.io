@@ -451,11 +451,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   line-height: 0.8;
 }
 
-.firefox .genre {
-  width: 49px;
-  padding: 28px 5px 14px 0px;
-}
-
 .screenshot_container {
   width: 256px;
   height: 224px;
