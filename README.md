@@ -1,6 +1,6 @@
 ## What is it?
 This is a Vue 3 + Vite project with a configured Action to automatically build and deploy to Github Pages.\
-Live version of the website: [NES](http://localhost:5173/#/nes) & [Sega](http://localhost:5173/#/sega)
+Live version of the website: [NES](https://bestercode.github.io/#/nes) & [Sega](https://bestercode.github.io/#/sega)
 
 ## Running locally
 ```console
