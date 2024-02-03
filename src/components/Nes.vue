@@ -344,7 +344,8 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
      1px  1px 0 #0000007a
      ;
   line-height: 1.4;
-  font-size: 16px;
+  font-family: 'PixelEmulator', sans-serif;
+  font-size: 14px;
   a {
     color: #e165ff;
   }
@@ -359,8 +360,8 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 @font-face {
-  font-family: 'Arcade'; 
-  src: url('@/assets/fonts/arcade.otf') format('truetype');
+  font-family: 'PixelEmulator'; 
+  src: url('@/assets/fonts/PixelEmulator.ttf') format('truetype');
 }
 
 .subheader {
@@ -425,8 +426,8 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 .game {
-  width: 374px;
-  height: 300px;
+  width: 323px;
+  height: 330px;
   background-image: image-set(
     '@/assets/nes-template.png' 1x,
     '@/assets/nes-template@2x.png' 2x,
@@ -441,14 +442,13 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  /* width is 54, the sum of Width and second padding */
-  width: 39px;  
-  padding: 28px 15px 14px 0px;
-  font-family: 'Arcade', sans-serif;
-  font-size: 36px;
-  word-spacing: -10px;
-  line-height: 0.6;
+  text-align: center;  
+  width: 50px;
+  padding: 53px 0px 10px 0px;
+  font-family: 'PixelEmulator', sans-serif;
+  font-size: 26px;
+  word-spacing: -9px;
+  line-height: 0.8;
 }
 
 .firefox .genre {
@@ -457,13 +457,14 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 .screenshot_container {
-  width: 320px;
+  width: 256px;
   height: 224px;
   /* crops the image's top and bottom if it exceeds the size */
   overflow: hidden; /* This hides the parts of the image that exceed the container's dimensions */
   position: relative;
   display: flex;
   align-items: center;
+  padding-top: 16px;
   /* glow */
   /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
 }
@@ -483,11 +484,13 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 .gameTexts {
-  height: 76px;
+  height: 86px;
   display: flex;
   flex-direction: column;  
   align-items: center;
   justify-content: center;
+  padding-left: 70px;
+  padding-right: 23px;
 }
 
 .gameTitle {
