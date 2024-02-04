@@ -1,7 +1,6 @@
 <template>
   <div id="home__content" ref="homeContent">
-    <canvas id="canvasWhiteLines"></canvas>
-    <!-- <canvas id="canvasGreenLines"></canvas> -->
+    <canvas id="canvasGrid"></canvas>
     <div class="content">
       <div class="header">
         <div class="credits">
@@ -119,13 +118,6 @@ function getRandomColor(cartridgeIndex) {
   const result = possibleColors[randomIndex];
   cartridgeColors.set(cartridgeIndex, result);
   return result;
-  //#042526 - dark green
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
 }
 
 function useBrightFont(cartridgeIndex)
@@ -176,8 +168,7 @@ onMounted(async () => {
   }
 
   resizeListener.value = () => {
-    createWhiteGrid();
-    //createGreenGrid();    
+    drawGridOnCanvas();
   };
   window.addEventListener('resize', resizeListener.value);
 
@@ -187,58 +178,18 @@ onMounted(async () => {
 });
 
 onUpdated(async () => {
-  createWhiteGrid();
-  //createGreenGrid();  
+  drawGridOnCanvas();
 });
 
 onUnmounted(() => {
   window.removeEventListener('resize', resizeListener.value);
 });
 
-function createGreenGrid() {
-  const container = homeContent.value;
-  if (!container) return;
-  const canvas = container.querySelector('#canvasGreenLines');
-  canvas.width =  container.parentElement.offsetWidth; //Math.max(container.offsetWidth, window.innerWidth);
-  canvas.height =  Math.max(container.offsetHeight, window.innerHeight);
-  const ctx = canvas.getContext('2d');  
-
-  // the lines start drawing at this offset from the top
-  let verticalOffset = 200;
-  
-  // Create a vertical gradient for the lines
-  // the transition lasts for 300 pixels, i.e. from verticalOffset to verticalOffset+300
-  const lineGradient = ctx.createLinearGradient(0, verticalOffset, 0, verticalOffset+2000);
-  lineGradient.addColorStop(0, 'rgba(49, 255, 109, 0.0)'); // fully transparent at the top
-  lineGradient.addColorStop(0.015, 'rgba(49, 255, 109, 0.1)'); // 0.1 transparency at 30 pixels from the top
-  lineGradient.addColorStop(0.03, 'rgba(49, 255, 109, 0.3)'); // 0.3 at 60 px
-  lineGradient.addColorStop(0.15, 'rgba(49, 255, 109, 1.0)'); // 1.0 at 300 px
-  lineGradient.addColorStop(0.6, 'rgba(49, 255, 109, 1.0)'); // 1.0 at 1200 px
-  lineGradient.addColorStop(1.0, 'rgba(49, 255, 109, 0.4)'); // 0.4 at 2000 px and further down
-  // Use this gradient for drawing lines
-  ctx.strokeStyle = lineGradient;
-
-  // other setup for the lines
-  ctx.lineWidth = 2;
-  ctx.shadowBlur = 8;
-  ctx.shadowColor = 'green';
-  
-  let intervalBetweenLines = 10;
-  drawHorizontalLines(ctx, verticalOffset, intervalBetweenLines, canvas.width, canvas.height);
-  drawVerticalLines(ctx, verticalOffset, canvas.width, canvas.height, 2.8);
-
-  // Setup for the triangle
-  const triangleVerticalOffset = 10;
-  const triangleHeight = 230;
-  const triangleWidth = 500;
-  drawTriangle(ctx, canvas.width, triangleVerticalOffset, triangleWidth, triangleHeight);
-}
-
-function createWhiteGrid() {
+function drawGridOnCanvas() {
   const container = homeContent.value;
   if (!container) return;
 
-  const canvas = container.querySelector('#canvasWhiteLines');
+  const canvas = container.querySelector('#canvasGrid');
   canvas.width =  container.parentElement.offsetWidth;
   canvas.height =  Math.max(container.offsetHeight, window.innerHeight);
 
@@ -287,8 +238,6 @@ function createWhiteGrid() {
   drawStars(canvas, ctx, 500, verticalCutoff);
 }
 
-
-
 function drawWhiteGrid(ctx, width, height, cellHeight, cellWidth) {
   // Draw horizontal and vertical lines
   // 30 is the original horizontal offset
@@ -321,104 +270,6 @@ function drawStars(canvas, ctx, count, verticalCutoff) {
     ctx.fillRect(x, y, size, size); // Draw a pixelated star
   }
 }
-
-function drawHorizontalLines(ctx, verticalOffset, intervalBetweenLines, width, height) {
-  let currentY = verticalOffset+40; // Starting position for the first line
-  let interval = intervalBetweenLines+40; // Initial interval between lines
-
-  while (currentY <= height) {
-    ctx.beginPath();
-    ctx.moveTo(0, currentY);
-    ctx.lineTo(width, currentY);
-    ctx.stroke();
-
-    currentY += interval; // Move to the position for the next line
-    interval += 5; // Increase the interval for the next line
-  }
-}
-
-function drawVerticalLines(ctx, verticalOffset, width, height, angleFactor) {
-  const centerX = width / 2;
-  const lineSpacing = 50; // Spacing between each line
-  const angleIncrease = Math.PI / 180; // Angle increase in radians for each line
-
-  // Draw the central vertical line
-  drawLine(ctx, centerX, verticalOffset, centerX, height);
-
-  // Draw lines to the right and left of the center
-  for (let i = 1; i <= (width - centerX) / lineSpacing; i++) {
-    // Calculate the angle for the current line
-    let angle = angleFactor * i * angleIncrease;
-    angle = Math.min(Math.max(angle, 0), 1.57); // clamp to 90 degrees to avoid the line going into wild directions
-
-    // Lines to the right of the center
-    drawAngledLine(ctx, centerX + i * lineSpacing, verticalOffset, angle, height);
-
-    // Lines to the left of the center
-    drawAngledLine(ctx, centerX - i * lineSpacing, verticalOffset, -angle, height);
-  }
-}
-
-function drawAngledLine(ctx, x, y, angle, height) {
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  // Calculate the end point of the line using the angle
-  ctx.lineTo(x + Math.tan(angle) * height, height);
-  ctx.stroke();
-}
-
-function drawLine(ctx, x1, y1, x2, y2) {
-  ctx.beginPath();
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.stroke();
-}
-
-function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleHeight) {
-
-  // Create a vertical gradient for the triangle
-  const triangleGradientTop = ctx.createLinearGradient(0, verticalOffset, 0, verticalOffset + triangleHeight);
-  triangleGradientTop.addColorStop(0, 'rgba(247, 0, 247, 1.0)'); 
-  triangleGradientTop.addColorStop(0.4, 'rgba(255, 255, 255, 1.0)'); 
-  triangleGradientTop.addColorStop(0.4, 'rgba(255, 255, 255, 0.0)'); 
-  triangleGradientTop.addColorStop(1, 'rgba(255, 230, 255, 0.0)');
-  // Use this gradient for drawing lines
-  ctx.strokeStyle = triangleGradientTop;
-  // other setup for the lines
-  ctx.lineWidth = 3;
-  ctx.shadowBlur = 4;
-  ctx.shadowColor = 'deeppink';
-
-  const centerX = canvasWidth / 2;
-
-  ctx.beginPath();
-  ctx.moveTo(centerX, verticalOffset + triangleHeight); // Start from the top center
-  ctx.lineTo(centerX - triangleWidth/2, verticalOffset); // Draw to the bottom left
-  ctx.lineTo(centerX + triangleWidth/2, verticalOffset); // Draw to the bottom right
-  ctx.closePath();
-
-  // Stroke the lines to create the triangle outline
-  ctx.stroke();
-
-  const triangleGradientBottom = ctx.createLinearGradient(0, verticalOffset, 0, verticalOffset + triangleHeight);
-  triangleGradientBottom.addColorStop(0, 'rgba(247, 0, 247, 0.0)'); 
-  triangleGradientBottom.addColorStop(0.4, 'rgba(255, 255, 255, 0.0)'); 
-  triangleGradientBottom.addColorStop(0.4, 'rgba(255, 255, 255, 1.0)'); 
-  triangleGradientBottom.addColorStop(1, 'rgba(255, 230, 255, 1.0)');
-  // Use this gradient for drawing lines
-  ctx.strokeStyle = triangleGradientBottom;
-  ctx.shadowBlur = 0;
-  ctx.shadowColor = 'white';
-  ctx.beginPath();
-  ctx.moveTo(centerX, verticalOffset + triangleHeight); // Start from the top center
-  ctx.lineTo(centerX - triangleWidth/2, verticalOffset); // Draw to the bottom left
-  ctx.lineTo(centerX + triangleWidth/2, verticalOffset); // Draw to the bottom right
-  ctx.closePath();
-
-  // Stroke the lines to create the triangle outline
-  ctx.stroke();
-  
-}
 </script>
 
 <style scoped>
@@ -426,18 +277,11 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   margin: 0;
 }
 
-#canvasWhiteLines {
+#canvasGrid {
   position: absolute;
   top: 0;
   left: 0;
   z-index: -2;
-}
-
-#canvasGreenLines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
 
 .content {
@@ -511,13 +355,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
     -webkit-background-clip: text; /* Webkit-based browsers */
     background-clip: text;
     
-    /* stroke: */
-    /* -webkit-text-stroke: 1px rgba(212, 212, 212, 0.897);
-    text-stroke: 1px rgb(179, 179, 179); */
-
-    /* outer glow: */
-    /* -webkit-filter: drop-shadow(0px 0px 10px rgb(21, 75, 255));
-    filter: drop-shadow(0px 0px 10px rgb(21, 75, 255)); */
     color: transparent;
     display: inline-block;
 
@@ -601,8 +438,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   display: flex;
   align-items: center;
   padding-top: 16px;
-  /* glow */
-  /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
 }
 
 .screenshot_containerFamicom {
@@ -613,10 +448,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   position: relative;
   display: flex;
   align-items: center;
-  /* glow */
-  /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
-
-
 }
 
 .cover_containerFamicom {
@@ -627,10 +458,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   position: relative;
   display: flex;
   align-items: center;
-  /* glow */
-  /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
-
-
 }
 
 .screenshot {
@@ -655,7 +482,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   height: auto; /* Maintains the image's aspect ratio */
   /* helps to make it look crisp, like it's integer scaling on 4k */
   image-rendering: pixelated;
-  
 }
 
 .gamedetails {
@@ -745,7 +571,6 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 .logo1container img {
-  /* Ensure the image fits within the container. Adjust as necessary. */
   width: 100%;
   height: auto;
   display: block; /* Remove space below the image */  
