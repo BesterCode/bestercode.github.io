@@ -682,14 +682,15 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 
 .gameTextsFamicom {
   width: 427px;
-  height: 43px;
+  height: 48px;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   padding-left: 35px;
   padding-right: 35px;
-  padding-top: 15px;
+  padding-top: 0px;
+  padding-bottom: 10px;
 
   span {
     text-align: center;
@@ -728,6 +729,7 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   justify-content: center;
   align-items: center;
   height: 40px;
+  text-align: center;
 }
 
 .logo1container {
