@@ -54,13 +54,17 @@
               <!-- <div class="genre">{{game.Genre}}</div> -->
               <div class="gamedetailsFamicom">
                 <div class="gameTextsFamicom">
-                  <span class="gameTitleFamicom" :class="{bright: useBrightFont(index)}">{{game.Game}}</span>
-                  <span class="gameDescriptionFamicom" v-if="game.Description" :class="{bright: useBrightFont(index)}">{{game.Description}}</span>
-                  <span class="gameDescriptionFamicom" v-if="game.Description2" :class="{bright: useBrightFont(index)}">{{game.Description2}}</span>
+                  <span class="gameTitleFamicom" :class="{bright: useBrightFont(index)}">{{game.Game}}</span>                  
                 </div>
-                <div class="screenshot_containerFamicom">
-                  <img class="screenshotFamicom" :src="game.Screenshot"/>
+                <div class="famicom_images_container">
+                  <div class="cover_containerFamicom">
+                    <img class="coverFamicom" :src="game.Screenshot2"/>
+                  </div>
+                  <div class="screenshot_containerFamicom">
+                    <img class="screenshotFamicom" :src="game.Screenshot"/>
+                  </div>
                 </div>
+                <div class="gameDescriptionFamicom" v-if="game.Description" :class="{bright: useBrightFont(index)}">{{game.Description}}</div>
               </div>
           </div>
         </template>
@@ -134,7 +138,7 @@ function useBrightFont(cartridgeIndex)
 
   // A common threshold for determining if the color is bright or dark is 0.5
   // This threshold can be adjusted based on desired sensitivity
-  return luminance < 0.5 ? true : false;
+  return luminance < 0.4 ? true : false;
 }
 
 function hexToRgb(hex) {
@@ -567,9 +571,9 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   height: 331px;
   background-size: cover;
   display:flex;
-  background-image: url('@/assets/famicom-cartridge-top-layer.png');
-  -webkit-mask-image: url('@/assets/famicom-cartridge-bottom-layer.png');
-  mask-image: url('@/assets/famicom-cartridge-bottom-layer.png');
+  background-image: url('@/assets/famicom-cartridge-top-layer2.png');
+  -webkit-mask-image: url('@/assets/famicom-cartridge-bottom-layer2.png');
+  mask-image: url('@/assets/famicom-cartridge-bottom-layer2.png');
   background-color: orange; /* The color you want */
 }
 
@@ -609,7 +613,20 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: 61px;
+  /* glow */
+  /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
+
+
+}
+
+.cover_containerFamicom {
+  width: 172px;
+  height: 224px;
+  /* crops the image's top and bottom if it exceeds the size */
+  overflow: hidden; /* This hides the parts of the image that exceed the container's dimensions */
+  position: relative;
+  display: flex;
+  align-items: center;
   /* glow */
   /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
 
@@ -630,9 +647,15 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   height: auto; /* Maintains the image's aspect ratio */
   /* helps to make it look crisp, like it's integer scaling on 4k */
   image-rendering: pixelated;
+}
 
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
+.coverFamicom {
+  /* helps with the crop */
+  width: 100%; /* Makes the image fill the container's width */
+  height: auto; /* Maintains the image's aspect ratio */
+  /* helps to make it look crisp, like it's integer scaling on 4k */
+  image-rendering: pixelated;
+  
 }
 
 .gamedetails {
@@ -644,6 +667,7 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 
 .gamedetailsFamicom {
   display: flex;
+  flex-direction: column;
 }
 
 .gameTexts {
@@ -657,18 +681,18 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 .gameTextsFamicom {
-  width: 171px;
-  height: 217px;
+  width: 427px;
+  height: 43px;
   display: flex;
   flex-direction: column;  
   align-items: center;
   justify-content: center;
   padding-left: 35px;
-  padding-right: 1px;
-  padding-top: 67px;
+  padding-right: 35px;
+  padding-top: 15px;
 
   span {
-  text-align: center;
+    text-align: center;
   }
 }
 
@@ -698,6 +722,12 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   &.bright {
     color: rgb(226, 226, 226);
   }
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
 }
 
 .logo1container {
@@ -735,5 +765,15 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   display: flex;
   width: 217px;
   justify-content: space-between;
+}
+
+.famicom_images_container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 34px;
+  background-color: black;
+  margin-right: 35px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 </style>
