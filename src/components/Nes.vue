@@ -35,7 +35,7 @@
           <div class="game" v-for="game in games" :key="game.Game">
               <div class="genre">{{game.Genre}}</div>
               <div class="gamedetails">
-                <div class="screenshot_container">
+                <div class="screenshot_container pixelated">
                   <img class="screenshot" :src="game.Screenshot"/>
                 </div>
                 <div class="gameTexts">
@@ -59,7 +59,7 @@
                   <div class="cover_containerFamicom">
                     <img class="coverFamicom" :src="game.Cover"/>
                   </div>
-                  <div class="screenshot_containerFamicom">
+                  <div class="screenshot_containerFamicom pixelated">
                     <img class="screenshotFamicom" :src="game.Screenshot"/>
                   </div>
                 </div>
@@ -464,24 +464,18 @@ function drawStars(canvas, ctx, count, verticalCutoff) {
   /* helps with the crop */
   width: 100%; /* Makes the image fill the container's width */
   height: auto; /* Maintains the image's aspect ratio */
-  /* helps to make it look crisp, like it's integer scaling on 4k */
-  image-rendering: pixelated;
 }
 
 .screenshotFamicom {
   /* helps with the crop */
   width: 100%; /* Makes the image fill the container's width */
   height: auto; /* Maintains the image's aspect ratio */
-  /* helps to make it look crisp, like it's integer scaling on 4k */
-  image-rendering: pixelated;
 }
 
 .coverFamicom {
   /* helps with the crop */
   width: 100%; /* Makes the image fill the container's width */
   height: auto; /* Maintains the image's aspect ratio */
-  /* helps to make it look crisp, like it's integer scaling on 4k */
-  image-rendering: pixelated;
 }
 
 .gamedetails {
