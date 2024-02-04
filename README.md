@@ -5,6 +5,7 @@ Live version of the website: [NES](https://bestercode.github.io/#/nes) & [Sega](
 ## Running locally
 ```console
 git pull
+nvm use v18.3.0 -- in case you're on something older, like v14.5.0
 npm install
 npm run dev
 ```
