@@ -58,7 +58,7 @@
                 </div>
                 <div class="famicom_images_container">
                   <div class="cover_containerFamicom">
-                    <img class="coverFamicom" :src="game.Screenshot2"/>
+                    <img class="coverFamicom" :src="game.Cover"/>
                   </div>
                   <div class="screenshot_containerFamicom">
                     <img class="screenshotFamicom" :src="game.Screenshot"/>
@@ -571,7 +571,7 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   height: 331px;
   background-size: cover;
   display:flex;
-  background-image: url('@/assets/famicom-cartridge-top-layer2.png');
+  background-image: url('@/assets/famicom-cartridge-top-layer3.png');
   -webkit-mask-image: url('@/assets/famicom-cartridge-bottom-layer2.png');
   mask-image: url('@/assets/famicom-cartridge-bottom-layer2.png');
   background-color: orange; /* The color you want */
