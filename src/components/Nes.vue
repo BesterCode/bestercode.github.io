@@ -20,21 +20,50 @@
                 alt="NES Logo"/>          
         </div>
         <div class="subheader"><div>WORTHWHILE</div> <div>COLLECTION</div></div>
-      </div>
-      <div class="games_container">        
-        <div class="game" v-for="game in games" :key="game.Game">
-          <div class="genre">{{game.Genre}}</div>
-          <div class="gamedetails">
-            <div class="screenshot_container">
-              <img class="screenshot" :src="game.Screenshot"/>
-            </div>
-            <div class="gameTexts">
-              <span class="gameTitle">{{game.Game}}</span>
-              <span class="gameDescription" v-if="game.Description">{{game.Description}}</span>
-              <span class="gameDescription" v-if="game.Description2">{{game.Description2}}</span>
-            </div>
-          </div>
+        <div class="toggleDiv">
+          <span>NES</span>
+          <Toggler :checked="true"
+            @update:checked="toggleFamicom"
+            label=""
+          />
+          <span>FAMICOM</span>
         </div>
+      </div>
+      <div class="games_container">
+
+        <!-- NES cartridge -->
+        <template v-if="!famicom">
+          <div class="game" v-for="game in games" :key="game.Game">
+              <div class="genre">{{game.Genre}}</div>
+              <div class="gamedetails">
+                <div class="screenshot_container">
+                  <img class="screenshot" :src="game.Screenshot"/>
+                </div>
+                <div class="gameTexts">
+                  <span class="gameTitle">{{game.Game}}</span>
+                  <span class="gameDescription" v-if="game.Description">{{game.Description}}</span>
+                  <span class="gameDescription" v-if="game.Description2">{{game.Description2}}</span>
+                </div>
+              </div>
+          </div>
+        </template>
+
+        <!-- Famicom cartridge -->
+        <template v-else>
+          <div class="gameFamicom" v-for="game in games" :key="game.Game" :style="{ 'background-color': getRandomColor() }">
+              <!-- <div class="genre">{{game.Genre}}</div> -->
+              <div class="gamedetailsFamicom">
+                <div class="gameTextsFamicom">
+                  <span class="gameTitle">{{game.Game}}</span>
+                  <span class="gameDescription" v-if="game.Description">{{game.Description}}</span>
+                  <span class="gameDescription" v-if="game.Description2">{{game.Description2}}</span>
+                </div>
+                <div class="screenshot_containerFamicom">
+                  <img class="screenshotFamicom" :src="game.Screenshot"/>
+                </div>
+              </div>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -44,8 +73,34 @@
 import { onMounted, onUpdated, onUnmounted, ref } from 'vue';
 import yaml from 'js-yaml';
 import nesYaml from '@/assets/nes.yaml';
+import Toggler from './Toggler.vue';
 
 const games = ref([]);
+
+// switch between NES and Famicom cartridges display
+let famicom = ref(true);
+function toggleFamicom() {
+  famicom.value = !famicom.value;
+}
+
+const possibleColors = [
+  '#ff770c',
+  '#ffb200',
+];
+
+// Return a random color for a cartridge
+// Occasionally return a transparency, because some cartridges were see-through
+function getRandomColor() {
+  const randomIndex = Math.floor(Math.random() * possibleColors.length);
+  return possibleColors[randomIndex];
+  //#042526 - dark green
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 const homeContent = ref(null);
 const resizeListener = ref(null);
@@ -420,7 +475,7 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 .games_container {
   display: flex;
   gap: 20px 10px;
-  padding: 40px 5px 30px 5px;
+  padding: 30px 5px 30px 5px;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
@@ -434,6 +489,17 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   );
   background-size: cover;
   display:flex;
+}
+
+.gameFamicom {
+  width: 497px;
+  height: 331px;
+  background-size: cover;
+  display:flex;
+  background-image: url('@/assets/famicom-cartridge-top-layer.png');
+  -webkit-mask-image: url('@/assets/famicom-cartridge-bottom-layer.png');
+  mask-image: url('@/assets/famicom-cartridge-bottom-layer.png');
+  background-color: orange; /* The color you want */
 }
 
 .genre {
@@ -463,6 +529,22 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   /* glow */
   /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
 }
+
+.screenshot_containerFamicom {
+  width: 256px;
+  height: 224px;
+  /* crops the image's top and bottom if it exceeds the size */
+  overflow: hidden; /* This hides the parts of the image that exceed the container's dimensions */
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 61px;
+  /* glow */
+  /*filter: drop-shadow(0 10px 10px rgba(128, 0, 128, 0.5));*/
+
+
+}
+
 .screenshot {
   /* helps with the crop */
   width: 100%; /* Makes the image fill the container's width */
@@ -471,11 +553,26 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   image-rendering: pixelated;
 }
 
+.screenshotFamicom {
+  /* helps with the crop */
+  width: 100%; /* Makes the image fill the container's width */
+  height: auto; /* Maintains the image's aspect ratio */
+  /* helps to make it look crisp, like it's integer scaling on 4k */
+  image-rendering: pixelated;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 .gamedetails {
   width: calc(100% - 54px);
   text-align: center;
   display: flex;
   flex-direction: column;  
+}
+
+.gamedetailsFamicom {
+  display: flex;
 }
 
 .gameTexts {
@@ -486,6 +583,22 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   justify-content: center;
   padding-left: 70px;
   padding-right: 23px;
+}
+
+.gameTextsFamicom {
+  width: 172px;
+  height: 217px;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+  padding-left: 35px;
+  padding-right: 1px;
+  padding-top: 67px;
+
+  span {
+  text-align: center;
+  }
 }
 
 .gameTitle {
@@ -518,5 +631,19 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   /* Create and apply the gradient mask */
   -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
   mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);    
+}
+
+.toggleDiv {
+  :first-child {
+    width: 73px;
+    text-align: right;
+  }
+  :last-child {
+    color: orange;
+  }
+  color: #e878ff;
+  display: flex;
+  width: 217px;
+  justify-content: space-between;
 }
 </style>
