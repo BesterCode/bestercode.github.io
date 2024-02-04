@@ -50,13 +50,13 @@
 
         <!-- Famicom cartridge -->
         <template v-else>
-          <div class="gameFamicom" v-for="game in games" :key="game.Game" :style="{ 'background-color': getRandomColor() }">
+          <div class="gameFamicom" v-for="(game, index) in games" :key="game.Game" :style="{ 'background-color': getRandomColor(index) }">
               <!-- <div class="genre">{{game.Genre}}</div> -->
               <div class="gamedetailsFamicom">
                 <div class="gameTextsFamicom">
-                  <span class="gameTitle">{{game.Game}}</span>
-                  <span class="gameDescription" v-if="game.Description">{{game.Description}}</span>
-                  <span class="gameDescription" v-if="game.Description2">{{game.Description2}}</span>
+                  <span class="gameTitleFamicom" :class="{bright: useBrightFont(index)}">{{game.Game}}</span>
+                  <span class="gameDescriptionFamicom" v-if="game.Description" :class="{bright: useBrightFont(index)}">{{game.Description}}</span>
+                  <span class="gameDescriptionFamicom" v-if="game.Description2" :class="{bright: useBrightFont(index)}">{{game.Description2}}</span>
                 </div>
                 <div class="screenshot_containerFamicom">
                   <img class="screenshotFamicom" :src="game.Screenshot"/>
@@ -86,13 +86,35 @@ function toggleFamicom() {
 const possibleColors = [
   '#ff770c',
   '#ffb200',
+  '#042526ab', // rare
+  '#6e76c6',
+  '#c6ea4b',
+  '#787878',
+  '#e4e4e4',
+  '#262626',
+  '#e95241',
+  '#e68379',
+  '#7acdd7',
+  '#7de9e3',
+  '#e4382f',
+  '#e8e08e',
+  '#1087e1',
+  '#b262ff',
+  '#fbea66',
+  '#0fa563',
+  '#936144',
+  '#fdc651',
 ];
+
+const cartridgeColors = new Map();
 
 // Return a random color for a cartridge
 // Occasionally return a transparency, because some cartridges were see-through
-function getRandomColor() {
-  const randomIndex = Math.floor(Math.random() * possibleColors.length);
-  return possibleColors[randomIndex];
+function getRandomColor(cartridgeIndex) {
+  const randomIndex = Math.floor(Math.random() * possibleColors.length);  
+  const result = possibleColors[randomIndex];
+  cartridgeColors.set(cartridgeIndex, result);
+  return result;
   //#042526 - dark green
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -100,6 +122,45 @@ function getRandomColor() {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
+}
+
+function useBrightFont(cartridgeIndex)
+{
+  const hexColor = cartridgeColors.get(cartridgeIndex);
+  const rgb = hexToRgb(hexColor);
+  const luminance = calculateLuminance(rgb);
+
+  console.log(`cartridge ${cartridgeIndex} luminance: ${luminance}`);
+
+  // A common threshold for determining if the color is bright or dark is 0.5
+  // This threshold can be adjusted based on desired sensitivity
+  return luminance < 0.5 ? true : false;
+}
+
+function hexToRgb(hex) {
+    // Remove the "#" if present
+    if (hex.charAt(0) === '#') {
+        hex = hex.substr(1);
+    }
+
+    // Parse the R, G, B values
+    let bigint = parseInt(hex, 16);
+    let r = (bigint >> 16) & 255;
+    let g = (bigint >> 8) & 255;
+    let b = bigint & 255;
+
+    return [r, g, b];
+}
+
+function calculateLuminance([r, g, b]) {
+    // Normalize RGB values to the range 0 - 1
+    r /= 255;
+    g /= 255;
+    b /= 255;
+
+    // Calculate luminance
+    const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    return luminance;
 }
 
 const homeContent = ref(null);
@@ -415,6 +476,16 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 @font-face {
+  font-family: 'Permanent Marker'; 
+  src: url('@/assets/fonts/PermanentMarker.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nusaliver'; 
+  src: url('@/assets/fonts/nusaliver.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'PixelEmulator'; 
   src: url('@/assets/fonts/PixelEmulator.ttf') format('truetype');
 }
@@ -560,8 +631,8 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   /* helps to make it look crisp, like it's integer scaling on 4k */
   image-rendering: pixelated;
 
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .gamedetails {
@@ -586,7 +657,7 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
 }
 
 .gameTextsFamicom {
-  width: 172px;
+  width: 171px;
   height: 217px;
   display: flex;
   flex-direction: column;  
@@ -606,8 +677,27 @@ function drawTriangle(ctx, canvasWidth, verticalOffset, triangleWidth, triangleH
   line-height: 1.1;
 }
 
+.gameTitleFamicom {
+  font-size: 22px;
+  line-height: 1.1;
+  font-family: 'Permanent Marker', monospace;
+  color: rgb(34, 34, 34);
+  &.bright {
+    color: rgb(226, 226, 226);
+  }
+}
+
 .gameDescription {
   font-size: 12px;
+}
+
+.gameDescriptionFamicom {
+  font-size: 12px;
+  font-family: 'Nusaliver', monospace;
+  color: rgb(34, 34, 34);
+  &.bright {
+    color: rgb(226, 226, 226);
+  }
 }
 
 .logo1container {
